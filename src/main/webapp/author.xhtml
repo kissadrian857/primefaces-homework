@@ -10,6 +10,8 @@
 </h:head>
 <body>
 <h:form id="form">
+    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="Új hozzáadása"
+                     actionListener="#{authorCRUDMbean.initSave}" update="@form"/>
     <p:dataTable id="table" value="#{authorCRUDMbean.list}" var="author" rows="10"
                  paginator="true"
                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -35,6 +37,24 @@
             <h:outputText value="#{author.lastModifiedDate}"/>
         </p:column>
     </p:dataTable>
+
+    <p:outputPanel id="formPanelHolder">
+        <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:400px"
+                     rendered="#{authorCRUDMbean.inFunction}">
+            <p:outputLabel value="First name"/>
+            <p:inputText value="#{authorCRUDMbean.selectedAuthor.firstName}"/>
+
+            <p:outputLabel value="Last name"/>
+            <p:inputText value="#{authorCRUDMbean.selectedAuthor.lastName}"/>
+
+            <p:outputLabel value="Username"/>
+            <p:inputText value="#{authorCRUDMbean.selectedAuthor.username}"/>
+
+            <p:commandButton icon="pi pi-save" actionListener="#{authorCRUDMbean.save()}"
+                             process="formPanel" update="@form">
+            </p:commandButton>
+        </p:panelGrid>
+    </p:outputPanel>
 </h:form>
 
 </body>

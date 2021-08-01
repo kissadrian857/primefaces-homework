@@ -16,6 +16,8 @@ public class AuthorCRUDMbean implements Serializable {
 
     private List<Author> list;
 
+    private boolean inFunction;
+
     private Author selectedAuthor;
 
     @Inject
@@ -27,12 +29,31 @@ public class AuthorCRUDMbean implements Serializable {
         selectedAuthor = new Author();
     }
 
-    public void save(){
-        //TODO
+    public void initSave() {
+        selectedAuthor = new Author();
+        inFunction = true;
     }
 
-    public void remove(){
-        //TODO
+    public void initEdit(Author author) {
+        selectedAuthor = author;
+        inFunction = true;
+    }
+
+    public void save() {
+        if (selectedAuthor.getId() == null) {
+            selectedAuthor.setId(System.currentTimeMillis());
+            authorService.add(selectedAuthor);
+        } else {
+            authorService.update(selectedAuthor);
+        }
+        list = authorService.getAll();
+        selectedAuthor = new Author();
+        inFunction = false;
+    }
+
+    public void remove(Author author) {
+        authorService.remove(author);
+        list = authorService.getAll();
     }
 
     public List<Author> getList() {
@@ -49,5 +70,9 @@ public class AuthorCRUDMbean implements Serializable {
 
     public void setSelectedAuthor(Author selectedAuthor) {
         this.selectedAuthor = selectedAuthor;
+    }
+
+    public boolean isInFunction() {
+        return inFunction;
     }
 }
