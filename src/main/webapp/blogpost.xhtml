@@ -9,6 +9,11 @@
     <title>Blogpost</title>
 </h:head>
 <body>
-
+<p:dataTable id="table" value="#{blog.list}" var="author" rows="10"
+             paginator="true"
+             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+</p:dataTable>
 </body>
 </html>
