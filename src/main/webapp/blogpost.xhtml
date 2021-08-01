@@ -57,7 +57,11 @@
             <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.content}"/>
 
             <p:outputLabel value="Category"/>
-            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.category}"/>
+            <p:selectOneMenu id="option" value="#{blogPostCRUDMbean.selectedBlogPost.category}">
+                <f:selectItem itemLabel="JAVA" itemValue="JAVA"/>
+                <f:selectItem itemLabel="SQL" itemValue="SQL"/>
+                <f:selectItem itemLabel="MAVEN" itemValue="MAVEN"/>
+            </p:selectOneMenu>
 
             <p:outputLabel value="Published date"/>
             <p:calendar id="popup" value="#{blogPostCRUDMbean.selectedBlogPost.publishedDate}"/>
