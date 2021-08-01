@@ -15,6 +15,12 @@
     <p:commandButton value="XLS" styleClass="p-mr-2 p-mb-2">
         <p:dataExporter type="xls" target="table" fileName="export"/>
     </p:commandButton>
+    <p:commandButton value="XLXS" styleClass="p-mr-2 p-mb-2">
+        <p:dataExporter type="xlsxstream" target="table" fileName="export"/>
+    </p:commandButton>
+    <p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2">
+        <p:dataExporter type="pdf" target="table" fileName="export"/>
+    </p:commandButton>
 
     <p:dataTable id="table" value="#{blogPostCRUDMbean.list}" var="blog_post" rows="10"
                  paginator="true"
