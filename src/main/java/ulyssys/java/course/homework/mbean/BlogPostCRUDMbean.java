@@ -1,5 +1,6 @@
 package ulyssys.java.course.homework.mbean;
 
+import ulyssys.java.course.homework.entity.Author;
 import ulyssys.java.course.homework.entity.BlogPost;
 import ulyssys.java.course.homework.service.BlogPostService;
 
@@ -16,23 +17,44 @@ public class BlogPostCRUDMbean implements Serializable {
 
     private List<BlogPost> list;
 
+    private boolean inFunction;
+
     private BlogPost selectedBlogPost;
 
     @Inject
     BlogPostService blogPostService;
 
     @PostConstruct
-    private void init(){
+    private void init() {
         list = blogPostService.getAll();
         selectedBlogPost = new BlogPost();
     }
 
-    public void save(){
-        //TODO
+    public void initSave() {
+        selectedBlogPost = new BlogPost();
+        inFunction = true;
     }
 
-    public void remove(){
-        //TODO
+    public void initEdit(BlogPost blogPost) {
+        selectedBlogPost = blogPost;
+        inFunction = true;
+    }
+
+    public void save() {
+        if (selectedBlogPost.getId() == null) {
+            selectedBlogPost.setId(System.currentTimeMillis());
+            blogPostService.add(selectedBlogPost);
+        } else {
+            blogPostService.update(selectedBlogPost);
+        }
+        list = blogPostService.getAll();
+        selectedBlogPost = new BlogPost();
+        inFunction = false;
+    }
+
+    public void remove(BlogPost blogPost) {
+        blogPostService.remove(blogPost);
+        list = blogPostService.getAll();
     }
 
     public List<BlogPost> getList() {
@@ -49,5 +71,9 @@ public class BlogPostCRUDMbean implements Serializable {
 
     public void setSelectedBlogPost(BlogPost selectedBlogPost) {
         this.selectedBlogPost = selectedBlogPost;
+    }
+
+    public boolean isInFunction() {
+        return inFunction;
     }
 }
