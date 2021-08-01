@@ -12,7 +12,7 @@ public class BlogPost {
 
     private String content;
 
-    private String category;
+    private Category category;
 
     private Date createdDate;
 
@@ -44,11 +44,11 @@ public class BlogPost {
         this.content = content;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
