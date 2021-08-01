@@ -10,7 +10,7 @@
 </h:head>
 <body>
 <h:form id="form">
-    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="Új hozzáadása"
+    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="New"
                      actionListener="#{authorCRUDMbean.initSave}" update="@form"/>
     <p:dataTable id="table" value="#{authorCRUDMbean.list}" var="author" rows="10"
                  paginator="true"
@@ -35,6 +35,13 @@
         </p:column>
         <p:column headerText="Last modified date">
             <h:outputText value="#{author.lastModifiedDate}"/>
+        </p:column>
+        <p:column headerText="Functions">
+            <p:commandButton id="delete" icon="pi pi-times" process="@this" value="Remove"
+                             actionListener="#{authorCRUDMbean.remove(author)}"
+                             update="@form"/>
+            <p:commandButton id="update" process="@this" value="Modify" icon="pi pi-pencil"
+                             actionListener="#{authorCRUDMbean.initEdit(author)}" update=":form:formPanelHolder"/>
         </p:column>
     </p:dataTable>
 

@@ -10,7 +10,7 @@
 </h:head>
 <body>
 <h:form id="form">
-    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="Új hozzáadása"
+    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="New"
                      actionListener="#{blogPostCRUDMbean.initSave}" update="@form"/>
     <p:dataTable id="table" value="#{blogPostCRUDMbean.list}" var="blog_post" rows="10"
                  paginator="true"
@@ -37,6 +37,13 @@
         </p:column>
         <p:column headerText="Published date">
             <h:outputText value="#{blog_post.publishedDate}"/>
+        </p:column>
+        <p:column headerText="Functions">
+            <p:commandButton id="delete" icon="pi pi-times" process="@this" value="Remove"
+                             actionListener="#{blogPostCRUDMbean.remove(blog_post)}"
+                             update="@form"/>
+            <p:commandButton id="update" process="@this" value="Modify" icon="pi pi-pencil"
+                             actionListener="#{blogPostCRUDMbean.initEdit(blog_post)}" update=":form:formPanelHolder"/>
         </p:column>
     </p:dataTable>
 
