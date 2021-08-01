@@ -8,6 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Named
@@ -42,8 +43,11 @@ public class BlogPostCRUDMbean implements Serializable {
     public void save() {
         if (selectedBlogPost.getId() == null) {
             selectedBlogPost.setId(System.currentTimeMillis());
+            selectedBlogPost.setCreatedDate(new Date());
+            selectedBlogPost.setLastModifiedDate(new Date());
             blogPostService.add(selectedBlogPost);
         } else {
+            selectedBlogPost.setLastModifiedDate(new Date());
             blogPostService.update(selectedBlogPost);
         }
         list = blogPostService.getAll();
