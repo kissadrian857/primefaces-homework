@@ -43,13 +43,13 @@
             <h:outputText value="#{blog_post.category}"/>
         </p:column>
         <p:column headerText="Created date">
-            <h:outputText value="#{blog_post.createdDate}"/>
+            <h:outputText value="#{blog_post.getFormattedDate(blog_post.createdDate)}"/>
         </p:column>
         <p:column headerText="Last modified date">
-            <h:outputText value="#{blog_post.lastModifiedDate}"/>
+            <h:outputText value="#{blog_post.getFormattedDate(blog_post.lastModifiedDate)}"/>
         </p:column>
         <p:column headerText="Published date">
-            <h:outputText value="#{blog_post.publishedDate}"/>
+            <h:outputText value="#{blog_post.getFormattedDate(blog_post.publishedDate)}"/>
         </p:column>
         <p:column headerText="Functions" exportable="false">
             <p:commandButton id="delete" icon="pi pi-times" process="@this" value="Remove"

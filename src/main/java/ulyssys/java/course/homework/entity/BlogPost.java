@@ -1,6 +1,7 @@
 package ulyssys.java.course.homework.entity;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -74,5 +75,10 @@ public class BlogPost {
 
     public void setPublishedDate(Date publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+    public String getFormattedDate(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(date);
     }
 }
