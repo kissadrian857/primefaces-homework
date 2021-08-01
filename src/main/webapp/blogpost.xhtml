@@ -60,7 +60,7 @@
             <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.category}"/>
 
             <p:outputLabel value="Published date"/>
-            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.publishedDate}"/>
+            <p:calendar id="popup" value="#{blogPostCRUDMbean.selectedBlogPost.publishedDate}"/>
 
             <p:commandButton icon="pi pi-save" actionListener="#{blogPostCRUDMbean.save()}"
                              process="formPanel" update="@form">
