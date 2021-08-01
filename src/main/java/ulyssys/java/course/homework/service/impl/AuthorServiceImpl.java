@@ -20,4 +20,16 @@ public class AuthorServiceImpl extends AbstractServiceImpl<Author> implements Au
             }
         }
     }
+
+    public AuthorServiceImpl() {
+        for(int i = 0;i<100;i++){
+            Author author = new Author();
+            author.setUsername("Author" + i);
+            author.setLastName("AuthorLastName" + i);
+            author.setFirstName("AuthorFirstName" + i);
+            author.setCreatedDate(new Date());
+            author.setLastModifiedDate(new Date());
+            add(author);
+        }
+    }
 }

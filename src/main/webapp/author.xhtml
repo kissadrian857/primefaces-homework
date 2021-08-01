@@ -2,11 +2,40 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Author</title>
+</h:head>
 <body>
+<h:form id="form">
+    <p:dataTable id="table" value="#{authorCRUDMbean.list}" var="author" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+
+        <p:column headerText="ID">
+            <h:outputText value="#{author.id}"/>
+        </p:column>
+        <p:column headerText="First Name">
+            <h:outputText value="#{author.firstName}"/>
+        </p:column>
+        <p:column headerText="Last Name">
+            <h:outputText value="#{author.lastName}"/>
+        </p:column>
+        <p:column headerText="Username">
+            <h:outputText value="#{author.username}"/>
+        </p:column>
+        <p:column headerText="Created date">
+            <h:outputText value="#{author.createdDate}"/>
+        </p:column>
+        <p:column headerText="Last modified date">
+            <h:outputText value="#{author.lastModifiedDate}"/>
+        </p:column>
+    </p:dataTable>
+</h:form>
 
 </body>
 </html>
