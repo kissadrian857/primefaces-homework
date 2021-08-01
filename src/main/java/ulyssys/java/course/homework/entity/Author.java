@@ -1,6 +1,7 @@
 package ulyssys.java.course.homework.entity;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -64,5 +65,10 @@ public class Author {
 
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getFormattedDate(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(date);
     }
 }
