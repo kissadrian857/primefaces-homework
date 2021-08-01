@@ -9,11 +9,32 @@
     <title>Blogpost</title>
 </h:head>
 <body>
-<p:dataTable id="table" value="#{blog.list}" var="author" rows="10"
+<p:dataTable id="table" value="#{blogPostCRUDMbean.list}" var="blog_post" rows="10"
              paginator="true"
              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
              currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
              rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+    <p:column headerText="Id">
+        <h:outputText value="#{blog_post.id}"/>
+    </p:column>
+    <p:column headerText="Title">
+        <h:outputText value="#{blog_post.title}"/>
+    </p:column>
+    <p:column headerText="Content">
+        <h:outputText value="#{blog_post.content}"/>
+    </p:column>
+    <p:column headerText="Category">
+        <h:outputText value="#{blog_post.category}"/>
+    </p:column>
+    <p:column headerText="Created date">
+        <h:outputText value="#{blog_post.createdDate}"/>
+    </p:column>
+    <p:column headerText="Last modified date">
+        <h:outputText value="#{blog_post.lastModifiedDate}"/>
+    </p:column>
+    <p:column headerText="Published date">
+        <h:outputText value="#{blog_post.publishedDate}"/>
+    </p:column>
 </p:dataTable>
 </body>
 </html>

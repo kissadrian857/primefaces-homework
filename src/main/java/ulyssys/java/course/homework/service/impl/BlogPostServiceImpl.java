@@ -21,4 +21,13 @@ public class BlogPostServiceImpl extends AbstractServiceImpl<BlogPost> implement
             }
         }
     }
+
+    public BlogPostServiceImpl() {
+        for(int i= 0;i<100;i++){
+            BlogPost blogPost = new BlogPost();
+            blogPost.setTitle("Blogpost" + i);
+            blogPost.setCreatedDate(new Date());
+            add(blogPost);
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package ulyssys.java.course.homework.mbean;
 
 import ulyssys.java.course.homework.entity.BlogPost;
-import ulyssys.java.course.homework.service.AuthorService;
 import ulyssys.java.course.homework.service.BlogPostService;
 
 import javax.annotation.PostConstruct;
