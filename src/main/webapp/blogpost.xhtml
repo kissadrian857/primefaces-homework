@@ -9,32 +9,58 @@
     <title>Blogpost</title>
 </h:head>
 <body>
-<p:dataTable id="table" value="#{blogPostCRUDMbean.list}" var="blog_post" rows="10"
-             paginator="true"
-             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
-    <p:column headerText="Id">
-        <h:outputText value="#{blog_post.id}"/>
-    </p:column>
-    <p:column headerText="Title">
-        <h:outputText value="#{blog_post.title}"/>
-    </p:column>
-    <p:column headerText="Content">
-        <h:outputText value="#{blog_post.content}"/>
-    </p:column>
-    <p:column headerText="Category">
-        <h:outputText value="#{blog_post.category}"/>
-    </p:column>
-    <p:column headerText="Created date">
-        <h:outputText value="#{blog_post.createdDate}"/>
-    </p:column>
-    <p:column headerText="Last modified date">
-        <h:outputText value="#{blog_post.lastModifiedDate}"/>
-    </p:column>
-    <p:column headerText="Published date">
-        <h:outputText value="#{blog_post.publishedDate}"/>
-    </p:column>
-</p:dataTable>
+<h:form id="form">
+    <p:commandButton id="add" icon="pi pi-plus" process="@this" value="Új hozzáadása"
+                     actionListener="#{blogPostCRUDMbean.initSave}" update="@form"/>
+    <p:dataTable id="table" value="#{blogPostCRUDMbean.list}" var="blog_post" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+        <p:column headerText="Id">
+            <h:outputText value="#{blog_post.id}"/>
+        </p:column>
+        <p:column headerText="Title">
+            <h:outputText value="#{blog_post.title}"/>
+        </p:column>
+        <p:column headerText="Content">
+            <h:outputText value="#{blog_post.content}"/>
+        </p:column>
+        <p:column headerText="Category">
+            <h:outputText value="#{blog_post.category}"/>
+        </p:column>
+        <p:column headerText="Created date">
+            <h:outputText value="#{blog_post.createdDate}"/>
+        </p:column>
+        <p:column headerText="Last modified date">
+            <h:outputText value="#{blog_post.lastModifiedDate}"/>
+        </p:column>
+        <p:column headerText="Published date">
+            <h:outputText value="#{blog_post.publishedDate}"/>
+        </p:column>
+    </p:dataTable>
+
+    <p:outputPanel id="formPanelHolder">
+        <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:400px"
+                     rendered="#{blogPostCRUDMbean.inFunction}">
+            <p:outputLabel value="Title"/>
+            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.title}"/>
+
+            <p:outputLabel value="Content"/>
+            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.content}"/>
+
+            <p:outputLabel value="Category"/>
+            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.category}"/>
+
+            <p:outputLabel value="Published date"/>
+            <p:inputText value="#{blogPostCRUDMbean.selectedBlogPost.publishedDate}"/>
+
+            <p:commandButton icon="pi pi-save" actionListener="#{blogPostCRUDMbean.save()}"
+                             process="formPanel" update="@form">
+            </p:commandButton>
+        </p:panelGrid>
+    </p:outputPanel>
+</h:form>
+
 </body>
 </html>
