@@ -27,4 +27,27 @@ public class AuthorCRUDMbean implements Serializable {
         selectedAuthor = new Author();
     }
 
+    public void save(){
+        //TODO
+    }
+
+    public void remove(){
+        //TODO
+    }
+
+    public List<Author> getList() {
+        return list;
+    }
+
+    public void setList(List<Author> list) {
+        this.list = list;
+    }
+
+    public Author getSelectedAuthor() {
+        return selectedAuthor;
+    }
+
+    public void setSelectedAuthor(Author selectedAuthor) {
+        this.selectedAuthor = selectedAuthor;
+    }
 }
